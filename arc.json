@@ -1,6 +1,13 @@
-[1 2 3 4 5]
-<class 'numpy.ndarray'>
-<class 'list'>
-<class 'numpy.ndarray'>
-Tiempo lista:  0.24808859825134277
-Tiempo array:  0.011013507843017578
+3
+(3,)
+[
+    [
+        1 2 3
+    ]
+ [
+        4 5 6
+    ]
+]
+2
+(2,
+3)

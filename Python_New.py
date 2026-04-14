@@ -2,22 +2,25 @@ import numpy as np
 import pandas as pd 
 import time 
 
-ruta = r"C:\Users\javie\OneDrive\Desktop\Excel_DB\medallas.csv"
-array = np.genfromtxt(ruta, delimiter=',') # lee el archivo CSV y lo convierte en un array de NumPy, utilizando la coma como delimitador
-print(array)
+df = pd.DataFrame({
+    'Impares' : [1, 3, 5],
+    'Pares' : [2, 4, 6]
+})
 
-array1 = np.genfromtxt(ruta, delimiter=',', filling_values=0) # hace que los valores vacíos se llenen con 0
-print(array1)
+print(df)
 
-array1 = np.genfromtxt(ruta, delimiter=',', filling_values=0, skip_header=1) # hace que se salte la primera fila (cabecera) y los valores vacíos se llenen con 0
-print(array1)
+array_dp1 = df.values # con el metodo values de un dataframe podemos convertirlo a un array de numpy, el resultado es un array bidimensional con los mismos datos que el dataframe pero sin los indices ni las columnas
+print(array_dp1)
 
-array1 = np.genfromtxt(ruta, delimiter=',', filling_values=0, skip_header=1, dtype=int) # hace que se salte la primera fila (cabecera), los valores vacíos se llenen con 0 y los datos se conviertan a enteros
-print(array1)
+arra_n2 = df.to_numpy() # otra forma de convertir un dataframe a un array de numpy, el resultado es el mismo que con el metodo values
+print(arra_n2)
 
-array_ejemplo = np.array([[1, 2, 3], 
-                            [4, 5, 6]])
-print(array_ejemplo)
+print(np.sqrt(df)) # con el metodo sqrt de numpy podemos calcular la raiz cuadrada de cada elemento del dataframe, el resultado es un nuevo dataframe con los mismos indices y columnas pero con los valores transformados
 
-ruta2 = r"C:\Users\javie\OneDrive\Desktop\Excel_DB\mis_datos.csv"
-np.savetxt(ruta2, array_ejemplo, delimiter=',', fmt='%d') # guarda el array en un archivo CSV, utilizando la coma como delimitador y el formato de enteros)
+print(np.max(df)) # con el metodo max de numpy podemos calcular el valor maximo de cada columna del dataframe, el resultado es una serie con los mismos indices que el dataframe pero con los valores maximos de cada columna
+
+df_desde_np = pd.DataFrame(array_dp1) #creamos un nuevo dataframe a partir del array creado con el metodo values
+print(df_desde_np)
+
+df_desde_np = pd.DataFrame(array_dp1, columns=['Col1', 'Col2']) #creamos un nuevo dataframe a partir del array creado con el metodo values y le asignamos nombres a las columnas
+print(df_desde_np)

@@ -2,37 +2,26 @@ import numpy as np
 import pandas as pd 
 import time 
 
+# nan dato faltante
 
-array1 = np.array([1, 2, 3])
-print(array1)
+array = np.array([1, 2, np.nan, 4, 5]) # crear un array con un valor faltante (nan)
+print(array)
 
-array2 = np.array([[0], [10], [20], [30]])
-print(array2)
+print(np.isnan(array)) # verificar si hay valores faltantes
 
-broadcast_suma = array2 + array1 # broadcasting, se suman cada elemento de array1 a cada fila de array2
-print(broadcast_suma)
+print(np.mean(array)) # calcular la media del array, esto dará un resultado nan debido al valor faltante
 
-broadcast_mult = array2 * array1 # broadcasting, se multiplican cada elemento de array1 a cada fila de array2
-print(broadcast_mult)
+print(np.nanmean(array)) # calcular la media ignorando el valor faltante
 
-# Funciones Universales
-a = np.array([1, 2, 3])
-b = np.array([4, 5, 6])
+array_con_0 = np.where(np.isnan(array), 0, array) # reemplazar los valores faltantes con 0
+print(array_con_0)
 
-resultado = np.add(a, b) # suma elemento a elemento
-print(resultado)
+promedio = np.nanmean(array) # calcular el promedio del array ignorando los valores faltantes
+array_con_promedio = np.where(np.isnan(array), promedio, array) # reemplazar los valores faltantes con el promedio del array
+print(array_con_promedio) 
 
-#substract, multiply, divide, power, log, exp, sin, cos, tan, etc
+array_filtrado = array[np.isnan(array)] # filtrar los valores faltantes del array, esto dará un array vacío ya que no se incluyen los valores faltantes
+print(array_filtrado)
 
-resultado2 = np.exp(a)
-print(resultado2)
-
-resultado3 = np.log(a)
-print(resultado3)
-
-resultado4 = np.log10(a)
-print(resultado4)
-
-resultado5 = np.sqrt(a)
-print(resultado5)
-
+array_filtrado1 = array[~np.isnan(array)] # filtrar los valores no faltantes del array, esto dará un array con los valores 1, 2, 4 y 5
+print(array_filtrado1)

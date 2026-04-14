@@ -2,26 +2,22 @@ import numpy as np
 import pandas as pd 
 import time 
 
-# nan dato faltante
-
-array = np.array([1, 2, np.nan, 4, 5]) # crear un array con un valor faltante (nan)
+ruta = r"C:\Users\javie\OneDrive\Desktop\Excel_DB\medallas.csv"
+array = np.genfromtxt(ruta, delimiter=',') # lee el archivo CSV y lo convierte en un array de NumPy, utilizando la coma como delimitador
 print(array)
 
-print(np.isnan(array)) # verificar si hay valores faltantes
+array1 = np.genfromtxt(ruta, delimiter=',', filling_values=0) # hace que los valores vacíos se llenen con 0
+print(array1)
 
-print(np.mean(array)) # calcular la media del array, esto dará un resultado nan debido al valor faltante
+array1 = np.genfromtxt(ruta, delimiter=',', filling_values=0, skip_header=1) # hace que se salte la primera fila (cabecera) y los valores vacíos se llenen con 0
+print(array1)
 
-print(np.nanmean(array)) # calcular la media ignorando el valor faltante
+array1 = np.genfromtxt(ruta, delimiter=',', filling_values=0, skip_header=1, dtype=int) # hace que se salte la primera fila (cabecera), los valores vacíos se llenen con 0 y los datos se conviertan a enteros
+print(array1)
 
-array_con_0 = np.where(np.isnan(array), 0, array) # reemplazar los valores faltantes con 0
-print(array_con_0)
+array_ejemplo = np.array([[1, 2, 3], 
+                            [4, 5, 6]])
+print(array_ejemplo)
 
-promedio = np.nanmean(array) # calcular el promedio del array ignorando los valores faltantes
-array_con_promedio = np.where(np.isnan(array), promedio, array) # reemplazar los valores faltantes con el promedio del array
-print(array_con_promedio) 
-
-array_filtrado = array[np.isnan(array)] # filtrar los valores faltantes del array, esto dará un array vacío ya que no se incluyen los valores faltantes
-print(array_filtrado)
-
-array_filtrado1 = array[~np.isnan(array)] # filtrar los valores no faltantes del array, esto dará un array con los valores 1, 2, 4 y 5
-print(array_filtrado1)
+ruta2 = r"C:\Users\javie\OneDrive\Desktop\Excel_DB\mis_datos.csv"
+np.savetxt(ruta2, array_ejemplo, delimiter=',', fmt='%d') # guarda el array en un archivo CSV, utilizando la coma como delimitador y el formato de enteros)

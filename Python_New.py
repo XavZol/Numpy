@@ -2,15 +2,33 @@ import numpy as np
 import pandas as pd 
 import time 
 
-array = np.array([1 , 2 , 3 ])
-print(len(array))
 
-print(array.shape)
+x = [ 1, 2, 3]
+y = [ 4, 5, 6]
+z = [ 7, 8, 9]
 
-array_2d = np.array([[1, 2, 3], [4, 5, 6]])
+print(np.concat((x, y, z))) # concatenar arrays concat y concatenate hacen lo mismo, pero concat es mas rapido que concatenate
+print(np.concatenate((x, y, z)))
 
-print(array_2d)
+a = [[1, 2], 
+        [3, 4]]
+b = [[5, 6], 
+        [7, 8]]
 
-print(len(array_2d))
+print(np.concat([a] + [b], axis=1))
+print(np.concat([a] + [b], axis=0)) # concatenar con axis=0 es lo mismo que sin axis, pero es mas rapido que con axis=0
 
-print(array_2d.shape) 
+array_concat = np.concat([a] + [b], axis=0)
+print(np.shape(array_concat))
+
+array_reformado = array_concat.reshape(2, 4) # reformar el array a una nueva forma, en este caso a una matriz de 2 filas y 4 columnas
+print(array_reformado)
+
+array_sumado = array_reformado + array_reformado # sumar el array consigo mismo, lo que es lo mismo que multiplicar por 2, pero es mas rapido que multiplicar por 2
+print(array_sumado) 
+
+array_mult = array_reformado * array_reformado # multiplicar el array consigo mismo, lo que es lo mismo que elevar al cuadrado, pero es mas rapido que elevar al cuadrado
+print(array_mult)
+
+raices = np.sqrt(array_mult) # calcular la raiz cuadrada del array, lo que es lo mismo que elevar al cuadrado y luego sacar la raiz cuadrada, pero es mas rapido que elevar al cuadrado y luego sacar la raiz cuadrada
+print(raices)

@@ -2,34 +2,23 @@ import numpy as np
 import pandas as pd 
 import time 
 
-array1d = np.array([1, 2, 3, 4, 5])
+array = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])
 
-array2d = np.array([[1, 2, 3],
-                    [4, 5, 6],
-                    [7, 8, 9]])
+print(array)
 
-print(array1d[0]) # ingresamos el indice del elemento que queremos mostrar, en este caso el primer elemento del array1d
+print(array.shape)
 
-print(array1d[-1]) # ingresamos el indice del elemento que queremos mostrar, en este caso el ultimo elemento del array1d, el indice -1 hace referencia al ultimo elemento del array
+array_mod = array.reshape(3, 3) #reshape the array to 3 rows and 3 columns
+print(array_mod)
 
-print(array2d[0]) # ingresamos el indice del elemento que queremos mostrar, en este caso el primer elemento del array2d, el resultado es un array de 3 elementos, ya que el primer elemento del array2d es un array de 3 elementos
+array_mod2 = array.reshape(-1, 3) #reshape the array to 3 columns and as many rows as needed (in this case, 3 rows)
+print(array_mod2)
 
-print(array2d[0, 0]) # ingresamos el indice del elemento que queremos mostrar, en este caso el primer elemento del primer elemento del array2d, el resultado es un numero, ya que el primer elemento del primer elemento del array2d es un numero
+array_volteado = array_mod2.transpose() #transpose the array, which means to flip it over its diagonal. The rows become columns and the columns become rows.
+print(array_volteado)
 
-print(array2d[1, 2]) # ingresamos el indice del elemento que queremos mostrar, en este caso el tercer elemento del segundo elemento del array2d, el resultado es un numero, ya que el tercer elemento del segundo elemento del array2d es un numero
-print(array2d[1] [2]) # lo mismo que la linea anterior, pero con una sintaxis diferente, el resultado es el mismo, ya que el tercer elemento del segundo elemento del array2d es un numero
+array_chat = array_mod.flatten() # flatten the array, which means to convert it into a 1D array. The shape of the array will be (9,) because it has 9 elements.
+print(array_chat)
 
-
-print(array1d[1:4]) # ingresamos el indice del elemento que queremos mostrar, en este caso los elementos desde el indice 1 hasta el indice 3 del array1d, el resultado es un array de 3 elementos, ya que los elementos desde el indice 1 hasta el indice 3 del array1d son 3 elementos
-
-print(array2d[1, :]) # ingresamos el indice del elemento que queremos mostrar, en este caso todos los elementos del segundo elemento del array2d, el resultado es un array de 3 elementos, ya que todos los elementos del segundo elemento del array2d son 3 elementos
-
-print(array2d[1, 1:3]) # ingresamos el indice del elemento que queremos mostrar, en este caso los elementos desde el indice 1 hasta el indice 2 del segundo elemento del array2d, el resultado es un array de 2 elementos, ya que los elementos desde el indice 1 hasta el indice 2 del segundo elemento del array2d son 2 elementos
-
-print(array2d[: , 1]) # ingresamos el indice del elemento que queremos mostrar, en este caso todos los elementos del segundo elemento de cada elemento del array2d, el resultado es un array de 3 elementos, ya que todos los elementos del segundo elemento de cada elemento del array2d son 3 elementos
-
-print(array2d[:2, :2]) # ingresamos el indice del elemento que queremos mostrar, en este caso los elementos desde el indice 0 hasta el indice 1 de cada elemento del array2d, el resultado es un array de 4 elementos, ya que los elementos desde el indice 0 hasta el indice 1 de cada elemento del array2d son 4 elementos
-
-print(array1d > 3) # ingresamos una condición para filtrar los elementos del array1d, en este caso los elementos mayores que 3, el resultado es un array de booleanos, ya que la comparación devuelve un valor booleano para cada elemento del array1d
-
-print(array2d % 2 == 0) # ingresamos una condición para filtrar los elementos del array2d, en este caso los elementos pares, el resultado es un array de booleanos, ya que la comparación devuelve un valor booleano para cada elemento del array2d
+array_ravel = array_mod.ravel() # ravel the array, which means to convert it into a 1D array. The shape of the array will be (9,) because it has 9 elements. The difference between flatten and ravel is that flatten returns a copy of the array, while ravel returns a view of the array. This means that if you modify the ravelled array, it will also modify the original array, while if you modify the flattened array, it will not modify the original array.
+print(array_ravel)
